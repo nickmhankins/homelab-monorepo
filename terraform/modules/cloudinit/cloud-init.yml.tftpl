@@ -1,0 +1,67 @@
+#cloud-config
+
+fqdn: ${hostname}
+
+ssh_pwauth: false
+
+users:
+  - name: almalinux
+    groups: [adm, systemd-journal]
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2AT+R8E1T/ZP/DqsAxtcrKc+iCAGT4Gi6pE5MjJTukyiUH4rkFDPLnA+/UVtkd1D5rQ1+8b0XAdgXNbthXSxss4hR5WbUmA7uGYyCKRR19RLBXPNjfKfMM+ieKHE6xRyiQ5JrCAD4zHgb9WWTORIKtKkarvH167bjtmCMxYzpOuLC4eEps7XWn/f9xu6a1vyjO6lxbsH0/wosTzoerqvYrTUTyvjkBpmExJvaO9guUpPQz2tsn1rPGvzUtTH6KweFZwvwF0YdxgI55fTdvyufOiOixz6zDfmU0PClbw1E0ZtWe3602ErLdVVhqNNnORwQctT7nlECv7DQxHAgGliwfZXeiVSBjJC5niwlCupJsLqibHgi4NUEnzThsQHW21YCMRX0lUnUeobsZGWNtmWbQOjd37lTgwOb4MnMUXk4KVP+Y5Xrml2SPraDaDDuYE0VxGDCHvpW6swDKfIO1yIFrj5bma3hQY7E/gHRLcjT7ssriESKeKV3NJpZoZ4fVBU=
+  - name: nick
+    groups: [wheel]
+    shell: /bin/zsh
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2AT+R8E1T/ZP/DqsAxtcrKc+iCAGT4Gi6pE5MjJTukyiUH4rkFDPLnA+/UVtkd1D5rQ1+8b0XAdgXNbthXSxss4hR5WbUmA7uGYyCKRR19RLBXPNjfKfMM+ieKHE6xRyiQ5JrCAD4zHgb9WWTORIKtKkarvH167bjtmCMxYzpOuLC4eEps7XWn/f9xu6a1vyjO6lxbsH0/wosTzoerqvYrTUTyvjkBpmExJvaO9guUpPQz2tsn1rPGvzUtTH6KweFZwvwF0YdxgI55fTdvyufOiOixz6zDfmU0PClbw1E0ZtWe3602ErLdVVhqNNnORwQctT7nlECv7DQxHAgGliwfZXeiVSBjJC5niwlCupJsLqibHgi4NUEnzThsQHW21YCMRX0lUnUeobsZGWNtmWbQOjd37lTgwOb4MnMUXk4KVP+Y5Xrml2SPraDaDDuYE0VxGDCHvpW6swDKfIO1yIFrj5bma3hQY7E/gHRLcjT7ssriESKeKV3NJpZoZ4fVBU=
+
+yum_repos:
+  docker-ce-stable:
+    baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    name: Docker CE Stable - $basearch
+  epel:
+    baseurl: http://download.fedoraproject.org/pub/epel/$releasever/Everything/$basearch/
+    enabled: true
+    gpgcheck: true
+    gpgkey: http://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever
+    name: EPEL
+
+package_update: true
+package_upgrade: true
+packages:
+  - zsh
+  - git
+  - python3
+  - python3-pip
+  - vim-enhanced
+  - wget
+  - docker-ce
+  - docker-ce-cli
+  - docker-compose-plugin
+  - docker-buildx-plugin
+  - rsync
+%{ for p in additional_packages ~}
+  - ${p}
+%{ endfor ~}
+
+write_files:
+  - path: /home/nick/.zshrc
+    content: |
+      unsetopt beep
+      alias h=history
+      alias grep=egrep
+      alias ll='ls -lah'
+  - path: /etc/systemd/coredump.conf.d/disable.conf
+    content: |
+      [Coredump]
+      Storage=none
+      ProcessSizeMax=0
+runcmd:
+  - mkdir /opt/services
+  - setenforce 0
+  - systemctl start docker && systemctl enable docker

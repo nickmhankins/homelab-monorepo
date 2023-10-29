@@ -1,0 +1,4 @@
+*.tfstate*
+.terraform
+packer_cache\
+.vscode

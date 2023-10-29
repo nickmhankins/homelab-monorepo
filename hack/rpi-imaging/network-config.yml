@@ -1,0 +1,11 @@
+version: 2
+ethernets:
+  eth0:
+    dhcp4: no
+    addresses: [{{address}}/24]
+    gateway4: 10.0.10.1
+    nameservers:
+      search: [mandatorygoat.com]
+      addresses:
+        - 10.0.10.3
+        - 10.0.10.4
