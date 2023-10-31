@@ -1,0 +1,12 @@
+---
+- name: Create service dir
+  register: svc_path
+  file:
+    path: /opt/services/pihole
+    state: directory
+
+- name: Copy compose file
+  copy:
+    src: docker-compose.yml
+    dest: "{{ svc_path.path }}"
+  notify: Recreate containers

@@ -1,0 +1,44 @@
+---
+- name: Create service dir
+  register: svc_path
+  file:
+    path: /opt/services/unifi
+    state: directory
+
+- name: Check if db already provisioned
+  stat:
+    path: "{{ svc_path.path }}/mongo/"
+  register: db
+
+- name: Provision database
+  when: not db.stat.exists
+  block:
+    - name: Get database password
+      pause:
+        prompt: "Enter db pass"
+        echo: no
+      register: passwd
+
+    - name: Copy mongo init
+      template:
+        src: init-mongo.js.tpl
+        dest: "{{ svc_path.path }}/init-mongo.js"
+      vars:
+        db_pass: "{{ passwd.user_input }}"
+
+    - name: Put it in a file
+      register: passfile
+      copy:
+        dest: "{{ svc_path.path }}/.pass"
+        content: "{{ passwd.user_input }}"
+
+- name: Get passfile contents
+  slurp:
+    src: "{{ svc_path.path }}/.pass"
+  register: passfile
+
+- name: Template compose file
+  template:
+    src: docker-compose.yml
+    dest: "{{ svc_path.path }}"
+  notify: Recreate containers

@@ -1,0 +1,47 @@
+---
+- name: Configure local env
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+    - name: Add hashicorp key
+      ansible.builtin.apt_key:
+        url: https://apt.releases.hashicorp.com/gpg
+        keyring: /usr/share/keyrings/hashicorp-archive-keyring.gpg
+        state: present
+
+    - name: Add hashicorp repo
+      ansible.builtin.apt_repository:
+        repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com focal main
+        state: present
+
+    - name: Install tfenv
+      block:
+        - name: Create tfenv dir
+          ansible.builtin.file:
+            path: /home/nick/.tfenv
+            state: directory
+
+        - name: Checkout tfenv
+          ansible.builtin.git:
+            repo: https://github.com/tfutils/tfenv.git
+            dest: /home/nick/.tfenv
+            update: no
+
+        - name: Create tfenv symlink
+          ansible.builtin.file:
+            src: /home/nick/.tfenv/bin/tfenv
+            dest: /usr/local/bin/tfenv
+            state: link
+
+    - name: Install packages
+      ansible.builtin.apt:
+        autoremove: true
+        autoclean: true
+        update_cache: true
+        name:
+          - git
+          - packer
+          - golang
+          - python3
+          - python3-pip
