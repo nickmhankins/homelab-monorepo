@@ -44,6 +44,7 @@ resource "proxmox_virtual_environment_vm" "docker_host_01" {
 
   cpu {
     type    = "host"
+    cores   = 2
     sockets = var.cpus
   }
 

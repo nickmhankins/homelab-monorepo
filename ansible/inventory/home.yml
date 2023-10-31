@@ -2,19 +2,19 @@ proxmox_node:
   hosts:
     10.0.10.10:
 
-unifi_rpi:
+primary_rpi:
   hosts:
-    10.0.10.3
+    10.0.10.3:
 
-secondary_dns_rpi:
+secondary_rpi:
   hosts:
-    10.0.10.4
+    10.0.10.4:
 
 rpi:
   children:
-    caddy_pi:
-    secondary_dns_rpi:
+    primary_rpi:
+    secondary_rpi:
 
 docker_hosts:
   hosts:
-    10.0.10.8
+    10.0.10.9:

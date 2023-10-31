@@ -16,7 +16,7 @@ pihole1.mandatorygoat.com {
 	encode zstd gzip
 
 	redir / /admin{uri}
-	reverse_proxy 10.0.10.3:80
+	reverse_proxy 10.0.10.3:81
 }
 
 pihole2.mandatorygoat.com {
