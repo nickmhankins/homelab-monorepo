@@ -1,15 +1,6 @@
 ---
-- name: Configure main pi
-  hosts: unifi_rpi
-  become: true
-  remote_user: almalinux
-  gather_facts: false
-  roles:
-    - pihole
-    - unifi
-
-- name: Configure secondary pi
-  hosts: secondary_dns_rpi
+- name: Configure raspberry pis
+  hosts: rpi
   become: true
   remote_user: almalinux
   gather_facts: false

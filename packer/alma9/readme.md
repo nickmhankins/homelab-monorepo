@@ -1,1 +1,1 @@
-future self reminder, this is unused since switching to cloud images
+future-self reminder, this is unused since switching to cloud images

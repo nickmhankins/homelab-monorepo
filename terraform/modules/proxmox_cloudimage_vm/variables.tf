@@ -7,7 +7,7 @@ variable "common" {
 }
 
 variable "memory" {
-  default = 2048
+  default = 4096
   type    = number
 }
 
