@@ -1,0 +1,46 @@
+---
+- name: Create service dir
+  register: svc_path
+  file:
+    path: /opt/services/caddy
+    state: directory
+
+- name: Check if keyfile already provisioned
+  stat:
+    path: "{{ svc_path.path }}/.pass"
+  register: keyfile
+
+- name: Populate keyfile
+  when: not keyfile.stat.exists
+  block:
+    - name: Get apikey
+      pause:
+        prompt: "Enter google domains api key"
+        echo: no
+      register: apikey
+
+    - name: Put it in a file
+      register: passfile
+      copy:
+        dest: "{{ svc_path.path }}/.pass"
+        content: "{{ apikey.user_input }}"
+
+- name: Get passfile contents
+  slurp:
+    src: "{{ svc_path.path }}/.pass"
+  register: passfile
+
+- name: Template Caddyfile
+  template:
+    src: Caddyfile.tpl
+    dest: "{{ svc_path.path }}/Caddyfile"
+  notify: Recreate containers
+
+- name: Copy compose and Dockerfile
+  copy:
+    src: "{{ item }}"
+    dest: "{{ svc_path.path }}"
+  notify: Recreate containers
+  with_items:
+    - docker-compose.yml
+    - Dockerfile
