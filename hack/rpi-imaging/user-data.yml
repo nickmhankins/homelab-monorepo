@@ -1,6 +1,6 @@
 #cloud-config
 
-hostname: {{ hostname }}
+fqdn: {{ hostname }}
 ssh_pwauth: false
 
 users:
