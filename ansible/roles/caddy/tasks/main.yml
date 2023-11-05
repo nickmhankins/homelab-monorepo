@@ -32,7 +32,7 @@
 
 - name: Template Caddyfile
   template:
-    src: Caddyfile.tpl
+    src: Caddyfile.j2
     dest: "{{ svc_path.path }}/Caddyfile"
   notify: Recreate containers
 

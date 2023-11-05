@@ -1,0 +1,12 @@
+---
+- name: Create service dir
+  register: svc_path
+  file:
+    path: /opt/services/orbitalsync
+    state: directory
+
+- name: Copy compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ svc_path.path }}/docker-compose.yml"
+  notify: Recreate containers

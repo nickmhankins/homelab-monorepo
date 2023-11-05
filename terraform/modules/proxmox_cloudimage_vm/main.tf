@@ -29,7 +29,7 @@ resource "proxmox_virtual_environment_file" "networkdata" {
   }
 }
 
-resource "proxmox_virtual_environment_vm" "docker_host_01" {
+resource "proxmox_virtual_environment_vm" "vm" {
   name = var.vm_name
 
   node_name = var.common.proxmox_host

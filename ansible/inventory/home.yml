@@ -2,18 +2,18 @@ proxmox_node:
   hosts:
     10.0.10.10:
 
-primary_rpi:
+primary_pihole:
   hosts:
     10.0.10.3:
 
-secondary_rpi:
+secondary_pihole:
   hosts:
     10.0.10.4:
 
-rpi:
+dns:
   children:
-    primary_rpi:
-    secondary_rpi:
+    primary_pihole:
+    secondary_pihole:
 
 docker_hosts:
   hosts:

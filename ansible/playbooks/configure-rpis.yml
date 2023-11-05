@@ -1,8 +1,38 @@
 ---
-- name: Configure raspberry pis
-  hosts: rpi
+- name: Configure pihole dns servers
+  hosts: dns
   become: true
   remote_user: almalinux
   gather_facts: false
-  roles:
-    - pihole
+  tasks:
+    - name: Add pihole role
+      include_role:
+        name: pihole
+      vars:
+        password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          32366336353064616631346335613061633837333163373332363730343632666566363464323532
+          3638653565323531623965623232316638353361643430380a346562623039336436383030353637
+          38316266363265633064343036393866643862336534326435626132626534383565333763663136
+          6461353435303564300a323666653034336265633062306662326465313939316433326239343833
+          3931
+
+- name: Configure dns replication
+  hosts: primary_pihole
+  become: true
+  remote_user: almalinux
+  gather_facts: false
+  tasks:
+    - name: Add orbitalsync role
+      include_role:
+        name: orbitalsync
+      vars:
+        primary_host: 10.0.10.3:81
+        secondary_host: 10.0.10.4:81
+        password: !vault |
+          $ANSIBLE_VAULT;1.1;AES256
+          30633339326239643935303130626266666463313839613562393038396261306637613639623161
+          6334646366643665336539323562626435393765383938350a323939393732633162636132646632
+          30336136333637386234663566343561353037343836323637656462333037663738326330386639
+          3635383637373462640a653134616536333666383666636630626539326664306538623063643435
+          6338

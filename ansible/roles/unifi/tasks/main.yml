@@ -21,7 +21,7 @@
 
     - name: Copy mongo init
       template:
-        src: init-mongo.js.tpl
+        src: init-mongo.js.j2
         dest: "{{ svc_path.path }}/init-mongo.js"
       vars:
         db_pass: "{{ passwd.user_input }}"
@@ -39,6 +39,6 @@
 
 - name: Template compose file
   template:
-    src: docker-compose.yml
+    src: docker-compose.yml.j2
     dest: "{{ svc_path.path }}"
   notify: Recreate containers

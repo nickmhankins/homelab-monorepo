@@ -5,6 +5,18 @@
     path: /opt/services/pihole
     state: directory
 
+- name: Create etc-pihole
+  register: conf_path
+  file:
+    path: "{{ svc_path.path }}/etc-pihole"
+    state: directory
+
+- name: Copy setupVars
+  template:
+    src: setupVars.conf.j2
+    dest: "{{ conf_path.path }}/setupVars.conf"
+  notify: Recreate containers
+
 - name: Copy compose file
   copy:
     src: docker-compose.yml
