@@ -11,8 +11,8 @@
     dest: "{{ svc_path.path }}/docker-compose.yml"
   notify: Recreate containers
 
-- name: Template config
-  template:
-    src: conf.yml.j2
+- name: Copy config
+  copy:
+    src: conf.yml
     dest: "{{ svc_path.path }}/conf.yml"
   notify: Recreate containers
