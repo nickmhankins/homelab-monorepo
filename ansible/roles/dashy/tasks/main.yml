@@ -1,0 +1,18 @@
+---
+- name: Create service dir
+  register: svc_path
+  file:
+    path: /opt/services/dashy
+    state: directory
+
+- name: Copy compose file
+  copy:
+    src: docker-compose.yml
+    dest: "{{ svc_path.path }}/docker-compose.yml"
+  notify: Recreate containers
+
+- name: Template config
+  template:
+    src: conf.yml.j2
+    dest: "{{ svc_path.path }}/conf.yml"
+  notify: Recreate containers
