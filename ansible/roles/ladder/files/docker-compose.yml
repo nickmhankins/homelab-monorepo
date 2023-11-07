@@ -1,0 +1,11 @@
+---
+version: "3.8"
+services:
+  ladder:
+    image: ghcr.io/kubero-dev/ladder:latest
+    container_name: ladder
+    environment:
+      - PORT=8080
+    ports:
+      - 8082:8080
+    restart: unless-stopped
