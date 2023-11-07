@@ -5,7 +5,7 @@ appConfig:
   statusCheck: true
   disableConfiguration: true
   preventWriteToDisk: true
-  theme: cherry-blossom
+  theme: basic
   layout: vertical
   hideComponents:
     hideSearch: true
@@ -35,3 +35,17 @@ sections:
   - title: Edgerouter
     icon: hl-edgeos-light
     url: https://erx.mandatorygoat.com
+
+- name: Applications
+  icon: ':books:'
+  displayData:
+    sortBy: default
+    sectionLayout: grid
+    itemCountX: 2
+  items:
+    - title: Ladder
+      icon: '	:middle_finger:'
+      url: https://ladder.mandatorygoat.com
+    - title: Vikunja
+      icon: ':white_check_mark:'
+      url: https://tasks.mandatorygoat.com

@@ -1,8 +1,10 @@
 ---
-- name: Configure dashy
+- name: Deploy raspberry pi 4 apps
   hosts: rpi_4
   become: true
   remote_user: almalinux
   gather_facts: false
   roles:
     - dashy
+    - vikunja
+    - ladder
