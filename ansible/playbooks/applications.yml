@@ -5,6 +5,6 @@
   remote_user: almalinux
   gather_facts: false
   roles:
-    - dashy
-    - vikunja
+    # - dashy
+    # - vikunja
     - ladder
