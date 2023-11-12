@@ -5,7 +5,7 @@ appConfig:
   statusCheck: true
   disableConfiguration: true
   preventWriteToDisk: true
-  theme: basic
+  theme: Colorful
   layout: vertical
   hideComponents:
     hideSearch: true
@@ -44,7 +44,7 @@ sections:
     itemCountX: 2
   items:
     - title: Ladder
-      icon: '	:middle_finger:'
+      icon: ':middle_finger:'
       url: https://ladder.mandatorygoat.com
     - title: Vikunja
       icon: ':white_check_mark:'

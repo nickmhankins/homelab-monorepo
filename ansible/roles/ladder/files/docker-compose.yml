@@ -2,10 +2,11 @@
 version: "3.8"
 services:
   ladder:
-    image: ghcr.io/kubero-dev/ladder:latest
+    image: ghcr.io/everywall/ladder:v0.0.17
     container_name: ladder
-    environment:
-      - PORT=8080
     ports:
       - 8082:8080
+    volumes:
+      - ./ruleset.yml:/app/ruleset.yaml
+      - ./handlers-form.html:/app/form.html
     restart: unless-stopped
