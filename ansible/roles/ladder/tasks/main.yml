@@ -13,8 +13,6 @@
   with_items:
   - src: https://raw.githubusercontent.com/everywall/ladder/main/ruleset.yaml
     dest: "{{ svc_path.path }}/ruleset.yml"
-  - src: https://raw.githubusercontent.com/everywall/ladder/main/handlers/form.html
-    dest: "{{ svc_path.path }}/handlers-form.html"
 
 - name: Copy compose file
   copy:
