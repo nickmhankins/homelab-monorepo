@@ -2,7 +2,7 @@
 version: "3.8"
 services:
   ladder:
-    image: ghcr.io/everywall/ladder:v0.0.17
+    image: ghcr.io/everywall/ladder:v0.0.18
     container_name: ladder
     ports:
       - 8082:8080
