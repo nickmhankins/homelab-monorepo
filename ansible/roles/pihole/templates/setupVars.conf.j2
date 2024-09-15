@@ -1,5 +1,5 @@
 INSTALL_WEB_INTERFACE=true
-WEBPASSWORD={{ password | trim | hash('sha256') | hash('sha256') }}
+WEBPASSWORD={{ password | hash('sha256') | hash('sha256') }}
 PIHOLE_INTERFACE=eth0
 QUERY_LOGGING=true
 BLOCKING_ENABLED=true

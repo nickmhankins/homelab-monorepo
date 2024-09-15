@@ -15,7 +15,7 @@
   block:
     - name: Get apikey
       pause:
-        prompt: "Enter google domains api key"
+        prompt: "Enter api key"
         echo: no
       register: apikey
 

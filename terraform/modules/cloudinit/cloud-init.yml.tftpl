@@ -9,13 +9,14 @@ users:
     groups: [adm, systemd-journal]
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHIDqsqUe3mwXCZvi8ur+Okv5zWcNb9jox3RIs7Te7JO  
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHIDqsqUe3mwXCZvi8ur+Okv5zWcNb9jox3RIs7Te7JO
   - name: nick
     groups: [wheel]
     shell: /bin/zsh
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
       - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHIDqsqUe3mwXCZvi8ur+Okv5zWcNb9jox3RIs7Te7JO
+
 yum_repos:
   docker-ce-stable:
     baseurl: https://download.docker.com/linux/centos/$releasever/$basearch/stable

@@ -1,5 +1,5 @@
 {
-	acme_dns google_domains  {{ passfile.content | b64decode | trim  }}
+	acme_dns cloudflare  {{ passfile.content | b64decode | trim  }}
 }
 
 erx.mandatorygoat.com {
@@ -61,5 +61,5 @@ tasks.mandatorygoat.com {
 ladder.mandatorygoat.com {
   encode zstd gzip
 
-  reverse_proxy 10.0.10.4:8082
+  reverse_proxy 10.0.10.4:5000
 }

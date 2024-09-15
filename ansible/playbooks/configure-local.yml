@@ -15,24 +15,9 @@
         repo: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com focal main
         state: present
 
-    - name: Install tfenv
-      block:
-        - name: Create tfenv dir
-          ansible.builtin.file:
-            path: /home/nick/.tfenv
-            state: directory
-
-        - name: Checkout tfenv
-          ansible.builtin.git:
-            repo: https://github.com/tfutils/tfenv.git
-            dest: /home/nick/.tfenv
-            update: no
-
-        - name: Create tfenv symlink
-          ansible.builtin.file:
-            src: /home/nick/.tfenv/bin/tfenv
-            dest: /usr/local/bin/tfenv
-            state: link
+    - name: Install tenv
+      ansible.builtin.apt:
+        deb: https://github.com/tofuutils/tenv/releases/download/v3.2.2/tenv_v3.2.2_amd64.deb
 
     - name: Install packages
       ansible.builtin.apt:

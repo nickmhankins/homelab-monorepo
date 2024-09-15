@@ -7,7 +7,7 @@ output "vm_storage_pool" {
 }
 
 output "cloud_image" {
-  value = "local:iso/Alma-9.2-CloudImage.img"
+  value = "local:iso/Alma-9.4-CloudImage.img"
 }
 
 output "network" {
