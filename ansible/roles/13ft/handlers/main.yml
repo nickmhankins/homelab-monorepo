@@ -1,5 +1,5 @@
 ---
-- name: Recreate vikunja containers
+- name: Recreate containers
   command: docker compose up -d --force-recreate
   args:
     chdir: "{{ svc_path.path }}"

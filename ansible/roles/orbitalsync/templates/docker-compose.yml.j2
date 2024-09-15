@@ -1,5 +1,4 @@
 ---
-version: '3.8'
 services:
   orbital-sync:
     image: mattwebbio/orbital-sync:1.5.2
@@ -9,3 +8,4 @@ services:
       SECONDARY_HOST_1_BASE_URL: "http://{{ secondary_host }}"
       SECONDARY_HOST_1_PASSWORD: "{{ password }}"
       INTERVAL_MINUTES: 15
+    restart: unless-stopped

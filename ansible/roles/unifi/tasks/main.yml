@@ -41,4 +41,4 @@
   template:
     src: docker-compose.yml.j2
     dest: "{{ svc_path.path }}/docker-compose.yml"
-  notify: Recreate containers
+  notify: Recreate unifi containers
