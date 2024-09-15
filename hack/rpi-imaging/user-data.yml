@@ -8,13 +8,13 @@ users:
     groups: [adm, systemd-journal]
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2AT+R8E1T/ZP/DqsAxtcrKc+iCAGT4Gi6pE5MjJTukyiUH4rkFDPLnA+/UVtkd1D5rQ1+8b0XAdgXNbthXSxss4hR5WbUmA7uGYyCKRR19RLBXPNjfKfMM+ieKHE6xRyiQ5JrCAD4zHgb9WWTORIKtKkarvH167bjtmCMxYzpOuLC4eEps7XWn/f9xu6a1vyjO6lxbsH0/wosTzoerqvYrTUTyvjkBpmExJvaO9guUpPQz2tsn1rPGvzUtTH6KweFZwvwF0YdxgI55fTdvyufOiOixz6zDfmU0PClbw1E0ZtWe3602ErLdVVhqNNnORwQctT7nlECv7DQxHAgGliwfZXeiVSBjJC5niwlCupJsLqibHgi4NUEnzThsQHW21YCMRX0lUnUeobsZGWNtmWbQOjd37lTgwOb4MnMUXk4KVP+Y5Xrml2SPraDaDDuYE0VxGDCHvpW6swDKfIO1yIFrj5bma3hQY7E/gHRLcjT7ssriESKeKV3NJpZoZ4fVBU=
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHIDqsqUe3mwXCZvi8ur+Okv5zWcNb9jox3RIs7Te7JO
   - name: nick
     groups: [wheel]
     shell: /bin/zsh
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2AT+R8E1T/ZP/DqsAxtcrKc+iCAGT4Gi6pE5MjJTukyiUH4rkFDPLnA+/UVtkd1D5rQ1+8b0XAdgXNbthXSxss4hR5WbUmA7uGYyCKRR19RLBXPNjfKfMM+ieKHE6xRyiQ5JrCAD4zHgb9WWTORIKtKkarvH167bjtmCMxYzpOuLC4eEps7XWn/f9xu6a1vyjO6lxbsH0/wosTzoerqvYrTUTyvjkBpmExJvaO9guUpPQz2tsn1rPGvzUtTH6KweFZwvwF0YdxgI55fTdvyufOiOixz6zDfmU0PClbw1E0ZtWe3602ErLdVVhqNNnORwQctT7nlECv7DQxHAgGliwfZXeiVSBjJC5niwlCupJsLqibHgi4NUEnzThsQHW21YCMRX0lUnUeobsZGWNtmWbQOjd37lTgwOb4MnMUXk4KVP+Y5Xrml2SPraDaDDuYE0VxGDCHvpW6swDKfIO1yIFrj5bma3hQY7E/gHRLcjT7ssriESKeKV3NJpZoZ4fVBU=
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHIDqsqUe3mwXCZvi8ur+Okv5zWcNb9jox3RIs7Te7JO
 
 yum_repos:
   docker-ce-stable:
