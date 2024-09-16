@@ -41,7 +41,7 @@ sections:
   displayData:
     sortBy: default
     sectionLayout: grid
-    itemCountX: 2
+    itemCountX: 1
   items:
     - title: Ladder
       icon: ':middle_finger:'
