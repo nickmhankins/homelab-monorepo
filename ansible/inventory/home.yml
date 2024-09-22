@@ -4,7 +4,7 @@ primary_pihole:
 
 rpi_4:
   hosts:
-    10.0.10.4
+    10.0.10.4:
 
 dns:
   children:
