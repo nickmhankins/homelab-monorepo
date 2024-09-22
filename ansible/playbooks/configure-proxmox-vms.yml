@@ -1,9 +1,0 @@
----
-- name: Configure docker host
-  hosts: docker_hosts
-  become: true
-  remote_user: almalinux
-  gather_facts: false
-  roles:
-    - caddy
-    - unifi

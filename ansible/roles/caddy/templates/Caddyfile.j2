@@ -26,20 +26,10 @@ pihole2.mandatorygoat.com {
 	reverse_proxy 10.0.10.4:81
 }
 
-proxmox.mandatorygoat.com {
-	encode zstd gzip
-
-	reverse_proxy https://10.0.10.10:8006 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
-}
-
 unifi.mandatorygoat.com {
 	encode zstd gzip
 
-	reverse_proxy https://10.0.10.9:8443 {
+	reverse_proxy https://10.0.10.4:8443 {
 		transport http {
 			tls_insecure_skip_verify
 		}
@@ -49,7 +39,7 @@ unifi.mandatorygoat.com {
 home.mandatorygoat.com {
 	encode zstd gzip
 
-	reverse_proxy 10.0.10.4:8080
+	reverse_proxy 10.0.10.4:9090
 }
 
 ladder.mandatorygoat.com {
