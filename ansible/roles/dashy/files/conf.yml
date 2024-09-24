@@ -26,9 +26,6 @@ sections:
   - title: PiHole 2
     icon: hl-pihole
     url: https://pihole2.mandatorygoat.com
-  - title: Proxmox
-    icon: hl-proxmox
-    url: https://proxmox.mandatorygoat.com
   - title: Unifi
     icon: si-ubiquiti
     url: https://unifi.mandatorygoat.com
