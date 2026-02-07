@@ -18,7 +18,7 @@ sections:
   displayData:
     sortBy: default
     sectionLayout: grid
-    itemCountX: 5
+    itemCountX: 4
   items:
   - title: PiHole 1
     icon: hl-pihole
@@ -29,17 +29,6 @@ sections:
   - title: Unifi
     icon: si-ubiquiti
     url: https://unifi.mandatorygoat.com
-  - title: Edgerouter
-    icon: hl-edgeos-light
-    url: https://erx.mandatorygoat.com
-
-- name: Applications
-  icon: ':books:'
-  displayData:
-    sortBy: default
-    sectionLayout: grid
-    itemCountX: 1
-  items:
-    - title: Ladder
-      icon: ':middle_finger:'
-      url: https://ladder.mandatorygoat.com
+  - title: Ladder
+    icon: ':middle_finger:'
+    url: https://ladder.mandatorygoat.com

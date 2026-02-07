@@ -2,7 +2,7 @@
 - name: Create service dir
   register: svc_path
   file:
-    path: /opt/services/orbitalsync
+    path: /opt/services/nebulasync
     state: directory
 
 - name: Copy compose file

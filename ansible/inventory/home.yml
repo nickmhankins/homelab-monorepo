@@ -1,3 +1,4 @@
+---
 primary_pihole:
   hosts:
     10.0.10.3:

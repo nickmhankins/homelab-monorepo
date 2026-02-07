@@ -11,14 +11,8 @@
     path: "{{ svc_path.path }}/etc-pihole"
     state: directory
 
-- name: Copy setupVars
-  template:
-    src: setupVars.conf.j2
-    dest: "{{ conf_path.path }}/setupVars.conf"
-  notify: Recreate containers
-
 - name: Copy compose file
-  copy:
-    src: docker-compose.yml
-    dest: "{{ svc_path.path }}"
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ svc_path.path }}/docker-compose.yml"
   notify: Recreate containers
