@@ -1,3 +1,4 @@
+---
 - name: Recreate containers
   command: docker compose up -d --force-recreate
   args:

@@ -1,0 +1,30 @@
+---
+services:
+  pihole:
+    container_name: pihole
+    image: pihole/pihole:2025.11.1
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "81:80/tcp"
+    environment:
+      TZ: 'America/New_York'
+      FTLCONF_dns_upstreams: '8.8.8.8;8.8.4.4;208.67.222.222;208.67.220.220'
+      FTLCONF_webserver_api_password: '{{ password }}'
+      FTLCONF_debug_api: false
+      FTLCONF_dns_dnssec: false
+      FTLCONF_dns_queryLogging: true
+      FTLCONF_dns_listeningMode: 'ALL'
+      FTLCONF_dns_domain_name: 'mandatorygoat.com'
+      FTLCONF_dns_bogusPriv: true
+    volumes:
+      - './etc-pihole:/etc/pihole'
+      - './etc-dnsmasq.d:/etc/dnsmasq.d'
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+      - SYS_TIME
+      - SYS_NICE
+    restart: unless-stopped

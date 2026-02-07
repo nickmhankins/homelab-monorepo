@@ -2,16 +2,6 @@
 	acme_dns cloudflare  {{ passfile.content | b64decode | trim  }}
 }
 
-erx.mandatorygoat.com {
-	encode zstd gzip
-
-	reverse_proxy https://10.0.10.1 {
-		transport http {
-			tls_insecure_skip_verify
-		}
-	}
-}
-
 pihole1.mandatorygoat.com {
 	encode zstd gzip
 

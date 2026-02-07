@@ -23,12 +23,10 @@
   remote_user: almalinux
   gather_facts: false
   tasks:
-    - name: Add orbitalsync role
+    - name: Add nebulasync role
       include_role:
-        name: orbitalsync
+        name: nebulasync
       vars:
-        primary_host: 10.0.10.3:81
-        secondary_host: 10.0.10.4:81
         password: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           30366330633038643234613932656162306332353730636662306330366333643235326634373664
